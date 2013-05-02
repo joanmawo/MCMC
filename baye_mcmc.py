@@ -13,23 +13,23 @@ y_obs = obs_data[:,1]
 
 n_iterations = 200000 
 
-x1_walk = [] #this is an empty list to keep all the steps
+x1_walk = np.empty((0)) #this is an empty list to keep all the steps
 x1_0 = (np.random.random()) #this is the initialization
-x1_walk = append(x1_walk,x_0)
+x1_walk = np.append(x1_walk,x1_0)
 
-x2_walk = [] #this is an empty list to keep all the steps
+x2_walk = np.empty((0)) #this is an empty list to keep all the steps
 x2_0 = (np.random.random()) #this is the initialization
-x2_walk = append(x2_walk,x_0)
+x2_walk = np.append(x2_walk,x2_0)
 
-x3_walk = [] #this is an empty list to keep all the steps
+x3_walk = np.empty((0)) #this is an empty list to keep all the steps
 x3_0 = (np.random.random()) #this is the initialization
-x3_walk = append(x3_walk,x_0)
+x3_walk = np.append(x3_walk,x3_0)
 
 
 
 def likelihood(y_obs, y_model):
     chi_squared = sum((y_obs - y_model)**2)
-    return exp(-chi_squared)
+    return np.exp(-chi_squared)
 
 def my_model(t_obs, a1, a2, a3):
 	return a1 + a2*t_obs + a3*t_obs*t_obs
@@ -50,8 +50,8 @@ for i in range(n_iterations):
 		x2_walk = np.append(x2_walk, x2_prime)
 		x3_walk = np.append(x3_walk, x3_prime)
    	else:
-       		beta = random.random()
-        	if(beta<=alpha1):
+       		beta = np.random.random()
+        	if(beta<=alpha):
             		x1_walk = np.append(x1_walk,x1_prime)
 			x2_walk = np.append(x2_walk,x2_prime)
 			x3_walk = np.append(x3_walk,x3_prime)

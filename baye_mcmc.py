@@ -61,9 +61,9 @@ for i in range(n_iterations):
 			x3_walk = np.append(x3_walk,x3_walk[i])
 
 
-average_x1 = average(x1_walk)
-average_x2 = average(x2_walk)
-average_x3 = average(x3_walk)
+average_x1 = np.average(x1_walk)
+average_x2 = np.average(x2_walk)
+average_x3 = np.average(x3_walk)
 
 best_y = my_model(t_obs, average_x1, average_x2, average_x3)
 
@@ -71,7 +71,8 @@ pylab.scatter(t_obs, y_obs)
 pylab.plot(t_obs, best_y, 'b')
 pylab.xlabel('tiempo')
 pylab.ylabel('posicion vertical')
-
+pylab.savefig("ajuste.png")
+pylab.show()
 
 
 
